@@ -1,88 +1,27 @@
 import random 
+from hangman_words import word_list as words
+from hangman_art import logo as logo, stages as stages
 
-word_list = ["beekeper", "geek", "orange", "order", "software"]
 
-chosen_word = word_list[random.randint(0, len(word_list) -1)]
+chosen_word = words[random.randint(0, len(words) -1)]
 
 display = ["_"]*len(chosen_word)
 
-print(chosen_word)
+# print(chosen_word)
 
 end_of_game = False
-
-stages = ['''
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========''', '''
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-''', '''
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-''']
-
-# print(stages[5])
 
 count_chars = len(display)
 current_chars = count_chars
 lives = 6
+print(logo)
 while not end_of_game:
     
-    guessed_char  = input("display a letter: ").lower()
+    guessed_char  = input("Guess a letter: ").lower()
 
-    if guessed_char in display:
-            
-        lives -= 1
+    if guessed_char in display:       
+        
         print("You already guessed this letter")
-        if lives == 0:
-            end_of_game = True
-            print("Sorry, You lost!")
                 
     else:
     
@@ -102,6 +41,7 @@ while not end_of_game:
             if lives == 0:
                 end_of_game = True
                 print("Sorry, You lost!")
+                print(f"The word was - {chosen_word}")
   
     print(" ".join(display))        
     print(stages[lives])        
