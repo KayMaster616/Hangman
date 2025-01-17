@@ -3,7 +3,7 @@ from hangman_words import word_list as words
 from hangman_art import logo as logo, stages as stages
 
 
-chosen_word = words[random.randint(0, len(words) -1)]
+chosen_word = random.choice(words)
 
 display = ["_"]*len(chosen_word)
 
